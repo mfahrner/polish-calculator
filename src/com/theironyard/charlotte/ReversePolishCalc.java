@@ -35,18 +35,46 @@ public class ReversePolishCalc {
             // when we're here, either num has a value
             // or it is null. if it's null, that means
             // we just encountered an operator
+//            if (num != null) {
+//                push(num);
+//            } else {
+//                if (currentToken.equals("+")) {
+//                    double value1 = pop();
+//                    double value2 = pop();
+//
+//                    push(value2 + value1);
+//                }
+//
+//            }
+
             if (num != null) {
                 push(num);
-            } else {
-                if (currentToken.equals("+")) {
-                    double value1 = pop();
-                    double value2 = pop();
-
-                    push(value2 + value1);
-                }
-
-                // TODO: implement the rest of the operators
             }
+            else if (currentToken.equals("+")) {
+                double value1 = pop();
+                double value2 = pop();
+
+                push(value2 + value1);
+            }
+            else if (currentToken.equals("-")) {
+                double value1 = pop();
+                double value2 = pop();
+
+                push(value2 - value1);
+            }
+            else if (currentToken.equals("/")) {
+                double value1 = pop();
+                double value2 = pop();
+
+                push(value2 / value1);
+            } else {
+                double value1 = pop();
+                double value2 = pop();
+
+                push(value2 * value1);
+            }
+//
+
         }
 
         // 4. return the result
@@ -56,10 +84,16 @@ public class ReversePolishCalc {
     private void push(String number) {
         // push on the stack
         // TODO: write this code that pushes onto the stack
+
+        stack[ stackTop ] = number;
+
+        stackTop++;
+
     }
 
     private void push(double d) {
         // change the double to a string and then push it on the stack
+        // calling push that takes string
         push(Double.toString(d));
     }
 
@@ -78,3 +112,27 @@ public class ReversePolishCalc {
         return Double.parseDouble(value);
     }
 }
+
+
+//else if (currentToken.equals("-")) {
+//                double value1 = pop();
+//                double value2 = pop();
+//
+//                push(value2 - value1);
+//            }
+//            else if (currentToken.equals("/")) {
+//                double value1 = pop();
+//                double value2 = pop();
+//
+//                push(value2 / value1);
+//            } else {
+//                double value1 = pop();
+//                double value2 = pop();
+//
+//                push(value2 * value1);
+//            }
+//
+//
+//stack[ stackTop ] = number;
+//
+//        stackTop++;
